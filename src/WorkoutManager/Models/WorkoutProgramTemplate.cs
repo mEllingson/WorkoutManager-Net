@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace WorkoutManager.Models
 {
-    public class ExerciseType
+    public class WorkoutProgramTemplate
     {
         public int ID { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        public ICollection<WorkoutDayTemplate> WorkoutDayTemplates { get; set; }
     }
 }
