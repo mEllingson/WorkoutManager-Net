@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WorkoutManager.Models
+namespace WorkoutManager.Models.EFModels
 {
     public class WorkoutSetTemplate
     {

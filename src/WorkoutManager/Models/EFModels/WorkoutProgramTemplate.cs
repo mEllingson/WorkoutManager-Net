@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WorkoutManager.Models
+namespace WorkoutManager.Models.EFModels
 {
-    public class ExerciseType
+    public class WorkoutProgramTemplate
     {
         public int ID { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        public ICollection<WorkoutDayTemplate> WorkoutDayTemplates { get; set; }
     }
 }

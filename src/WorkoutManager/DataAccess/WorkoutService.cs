@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using WorkoutManager.Models;
 
 namespace WorkoutManager.DataAccess
 {
@@ -17,16 +18,21 @@ namespace WorkoutManager.DataAccess
 
         public async Task<object> GetPrograms()
         {
-            return await this.Context.WorkoutProgramTemplates.ToListAsync();
+            return await this.Context.WorkoutProgramTemplates.Select(x => new WorkoutProgram
+            {
+                ID = x.ID,
+                Name = x.Name
+            }).ToListAsync();
         }
 
         public async Task<object> GetWorkoutDays(int id)
         {
-            return await this.Context.WorkoutDayTemplates.Where(x => x.WorkoutProgramTemplateID == id).Select(x => new
+            return await this.Context.WorkoutDayTemplates.Where(x => x.WorkoutProgramTemplateID == id).Select(x => new WorkoutDay
             {
-                id = x.ID,
-                name = x.Name,
-                dayOrder = x.DayOrder
+                ID = x.ID,
+                WorkoutProgramID = x.WorkoutProgramTemplateID,
+                Name = x.Name,
+                DayOrder = x.DayOrder
             }).ToListAsync();
         }
 

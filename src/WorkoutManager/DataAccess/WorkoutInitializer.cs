@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WorkoutManager.Models;
+using WorkoutManager.Models.EFModels;
 
 namespace WorkoutManager.DataAccess
 {
-    public class WorkoutInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<WorkoutContext>
+    public class WorkoutInitializer : System.Data.Entity.DropCreateDatabaseAlways<WorkoutContext>
     {
         protected override void Seed(WorkoutContext context)
         {
-            var program = new WorkoutProgramTemplate() { Name = "nSuns 5/3/1" };
+            var program = new WorkoutProgramTemplate() { Name = "5/3/1 5's Pro (5x5 FSL)" };
             context.WorkoutProgramTemplates.Add(program);
             context.SaveChanges();
 
             var days = new List<WorkoutDayTemplate>
             {
-                new WorkoutDayTemplate { Name = "Press Volume Day", DayOrder = 1, WorkoutProgramTemplateID = 1 },
+                new WorkoutDayTemplate { Name = "Overhead Press Day", DayOrder = 1, WorkoutProgramTemplateID = 1 },
                 new WorkoutDayTemplate { Name = "Squat Day", DayOrder = 2, WorkoutProgramTemplateID = 1 },
-                new WorkoutDayTemplate { Name = "Overhead Press Day", DayOrder = 3, WorkoutProgramTemplateID = 1 },
-                new WorkoutDayTemplate { Name = "Deadlift Day", DayOrder = 4, WorkoutProgramTemplateID = 1 },
+                new WorkoutDayTemplate { Name = "Deadlift Day", DayOrder = 3, WorkoutProgramTemplateID = 1 },
                 new WorkoutDayTemplate { Name = "Bench Press Day", DayOrder = 5, WorkoutProgramTemplateID = 1 }
             };
             days.ForEach(s => context.WorkoutDayTemplates.Add(s));
@@ -40,35 +39,57 @@ namespace WorkoutManager.DataAccess
             new Exercise { Name = "Deadlift", ExerciseTypeID = 1 },
             new Exercise { Name = "Bench Press", ExerciseTypeID = 1 },
             new Exercise { Name = "Overhead Press", ExerciseTypeID = 1 },
-            new Exercise { Name = "Pause Squat", ExerciseTypeID = 2 },
-            new Exercise { Name = "Close grip Bench Press", ExerciseTypeID = 2 },
-            new Exercise { Name = "Incline Bench Press", ExerciseTypeID = 2 },
-            new Exercise { Name = "Sumo Deadlift", ExerciseTypeID = 2 },
+            new Exercise { Name = "Incline Dumbbell Bench Press", ExerciseTypeID = 3 },
             new Exercise { Name = "Kroc Row", ExerciseTypeID = 3 },
             new Exercise { Name = "Facepull", ExerciseTypeID = 3 },
-            new Exercise { Name = "Overhead Tricep Extension", ExerciseTypeID = 3 },
             new Exercise { Name = "Hammer Curl", ExerciseTypeID = 3 },
             new Exercise { Name = "Lat Pulldown", ExerciseTypeID = 3 },
+            new Exercise { Name = "Ab Wheel", ExerciseTypeID = 3 },
+            new Exercise { Name = "Dumbbell Bench Press", ExerciseTypeID = 3 },
+            new Exercise { Name = "Dips", ExerciseTypeID = 3 },
+            new Exercise { Name = "Single Leg Press", ExerciseTypeID = 3 },
+            new Exercise { Name = "Back Raise (Hyperextension)", ExerciseTypeID = 3 },
             };
             exercises.ForEach(s => context.Exercises.Add(s));
             context.SaveChanges();
 
             var sets = new List<WorkoutSetTemplate>
             {
-                // Bench
-                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 4, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 90, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 4, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 90, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 4, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 90, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                // Squat
+               new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 40, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 50, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 60, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
 
-                // OHP
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 3, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 80, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 80, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 7, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 80, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 75, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 85, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
 
-                // Kroc Row
-                new WorkoutSetTemplate { ExerciseID = 9, Repetitions = 10, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 9, Repetitions = 10, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 9, Repetitions = 10, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false }
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 3, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+
+                // Lat pulldown
+                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+
+                // Dumbell Bench
+                new WorkoutSetTemplate { ExerciseID = 11, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 11, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 11, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 11, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 11, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+
+                // Ab Wheel
+                new WorkoutSetTemplate { ExerciseID = 10, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 10, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 10, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 10, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 10, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false }
             };
             sets.ForEach(s => context.WorkoutSetTemplates.Add(s));
             context.SaveChanges();

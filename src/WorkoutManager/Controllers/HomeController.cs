@@ -9,9 +9,11 @@ namespace WorkoutManager.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var result = HttpClientService.Instance.GetListItems<string>("workout/getprograms");
+            var service = new WorkoutService();
+            var programs = await service.GetPrograms();
+            var workoutDays = await service.GetWorkoutDays(1);
 
             return View();
         }

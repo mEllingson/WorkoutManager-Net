@@ -4,14 +4,15 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Threading.Tasks;
-using WorkoutManager.Models;
+using WorkoutManager.Models.EFModels;
 
 namespace WorkoutManager.DataAccess
 {
     public class WorkoutContext : DbContext
     {
-        public WorkoutContext() : base("WorkoutContext")
+        public WorkoutContext() : base("WorkoutManager")
         {
+            Database.SetInitializer(new WorkoutInitializer());
         }
 
         public DbSet<WorkoutProgramTemplate> WorkoutProgramTemplates { get; set; }
