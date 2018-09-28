@@ -16,7 +16,7 @@ namespace WorkoutManager.DataAccess
             this.Context = new WorkoutContext();
         }
 
-        public async Task<object> GetPrograms()
+        public async Task<List<WorkoutProgram>> GetPrograms()
         {
             return await this.Context.WorkoutProgramTemplates.Select(x => new WorkoutProgram
             {
@@ -25,7 +25,7 @@ namespace WorkoutManager.DataAccess
             }).ToListAsync();
         }
 
-        public async Task<object> GetWorkoutDays(int id)
+        public async Task<List<WorkoutDay>> GetBasicWorkoutDayInfo(int id)
         {
             return await this.Context.WorkoutDayTemplates.Where(x => x.WorkoutProgramTemplateID == id).Select(x => new WorkoutDay
             {
@@ -34,6 +34,22 @@ namespace WorkoutManager.DataAccess
                 Name = x.Name,
                 DayOrder = x.DayOrder
             }).ToListAsync();
+        }
+
+        public async Task<object> GetFullWorkoutLayout(int workoutID)
+        {
+            return await this.Context.WorkoutSetTemplates.Include("WorkoutDayTemplates").Include("Exercise").Include("Exercise.ExerciseType").Where(x => x.WorkoutDayTemplate.WorkoutProgramTemplateID == workoutID).Select(x => new {
+                workoutDayTemplateID = x.WorkoutDayTemplate.ID,
+                workoutDayTemplateName = x.WorkoutDayTemplate.Name,
+                id = x.ID,
+                exercise = x.Exercise.Name,
+                exerciseType = x.Exercise.ExerciseType.Name,
+                reps = x.Repetitions,
+                useTM = x.WeightBasedOnTrainingMax ?? false,
+                tmPercent = x.WeightPercentageOfTrainingMax ?? 0.0,
+                amrapSet = x.AMRAPSet,
+                warmupSet = x.WarmupSet
+            }).GroupBy(x => x.workoutDayTemplateID).ToListAsync();
         }
 
         public async Task<object> GetWorkoutSets(int id)

@@ -13,7 +13,9 @@ namespace WorkoutManager.Controllers
         {
             var service = new WorkoutService();
             var programs = await service.GetPrograms();
-            var workoutDays = await service.GetWorkoutDays(1);
+            var workoutDays = await service.GetBasicWorkoutDayInfo(1);
+            var fullworkoutDays = await service.GetFullWorkoutLayout(1);
+
 
             return View();
         }
