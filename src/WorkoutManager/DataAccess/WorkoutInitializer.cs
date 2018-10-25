@@ -57,19 +57,19 @@ namespace WorkoutManager.DataAccess
             var squatDaySets = new List<WorkoutSetTemplate>
             {
                 // Squat
-               new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 40, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 50, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 60, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
+               new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 40, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 50, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 60, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = true },
 
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 75, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 85, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 75, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 85, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
 
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
-                new WorkoutSetTemplate { ExerciseID = 4, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
+                new WorkoutSetTemplate { ExerciseID = 1, Repetitions = 5, WeightBasedOnTrainingMax = true, WeightPercentageOfTrainingMax = 65, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },
 
                 // Lat pulldown
                 new WorkoutSetTemplate { ExerciseID = 9, Repetitions = 12, WeightBasedOnTrainingMax = false, WorkoutDayTemplateID = 1, AMRAPSet = false, WarmupSet = false },

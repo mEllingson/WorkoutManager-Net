@@ -1,0 +1,18 @@
+﻿@model WorkoutManager.ViewModels.FullWorkoutLayoutViewModel
+
+<p>@Model.Program.ID</p>
+<p>@Model.Program.Name</p>
+
+@foreach(var day in Model.Program.WorkoutDays)
+{
+    <p>@day.Name - @day.DayOrder</p>
+    <ul>
+        @foreach(var exercise in day.WorkoutExercises)
+        {
+            <li>
+                @exercise.ExerciseName (@exercise.ExerciseType)
+            </li>
+        }
+    </ul>
+    
+}
