@@ -16,10 +16,10 @@ namespace WorkoutManager.DataAccess
 
             var days = new List<WorkoutDayTemplate>
             {
-                new WorkoutDayTemplate { Name = "Overhead Press Day", DayOrder = 1, WorkoutProgramTemplateID = 1 },
-                new WorkoutDayTemplate { Name = "Squat Day", DayOrder = 2, WorkoutProgramTemplateID = 1 },
+                new WorkoutDayTemplate { Name = "Squat Day", DayOrder = 1, WorkoutProgramTemplateID = 1 },
+                new WorkoutDayTemplate { Name = "Overhead Press Day", DayOrder = 2, WorkoutProgramTemplateID = 1 },                
                 new WorkoutDayTemplate { Name = "Deadlift Day", DayOrder = 3, WorkoutProgramTemplateID = 1 },
-                new WorkoutDayTemplate { Name = "Bench Press Day", DayOrder = 5, WorkoutProgramTemplateID = 1 }
+                new WorkoutDayTemplate { Name = "Bench Press Day", DayOrder = 4, WorkoutProgramTemplateID = 1 }
             };
             days.ForEach(s => context.WorkoutDayTemplates.Add(s));
             context.SaveChanges();
