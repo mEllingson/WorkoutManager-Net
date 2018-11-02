@@ -21,7 +21,7 @@ namespace WorkoutManager.Utilities
             List<FullWorkoutInfo> fullworkout = await service.GetFullWorkoutLayout(workoutID);
 
             //group by workout day
-            var workoutDays = fullworkout.GroupBy(x =>  x.WorkoutDayTemplateID );
+            var workoutDays = fullworkout.GroupBy(x => x.WorkoutDayTemplateID);
 
             var workoutDayList = new List<WorkoutDay>();
             foreach (var day in workoutDays)
@@ -35,8 +35,8 @@ namespace WorkoutManager.Utilities
                 //Group by exercise (in each workout day)
                 var workoutDayExercises = day.GroupBy(x => x.ExerciseID);
 
-                
-                foreach(var exercise in workoutDayExercises)
+
+                foreach (var exercise in workoutDayExercises)
                 {
                     var workoutExercise = new WorkoutExercise();
                     workoutExercise.ExerciseID = exercise.First().ExerciseID;
@@ -58,7 +58,7 @@ namespace WorkoutManager.Utilities
                     workoutDay.WorkoutExercises.Add(workoutExercise);
                 }
                 workoutDayList.Add(workoutDay);
-                
+
             }
             //order by day order
             program.WorkoutDays = workoutDayList.OrderBy(x => x.DayOrder);
@@ -66,10 +66,24 @@ namespace WorkoutManager.Utilities
             return program;
         }
 
+        public WorkoutDay GetWorkoutLayout(WorkoutDay workout, double mainliftTrainingMax)
+        {
+            foreach (var exercise in workout.WorkoutExercises)
+            {
+                foreach (var set in exercise.ExerciseSets)
+                {
+                    if (set.UseTM)
+                    {
+                        set.Weight = GetSetWeight(set.TmPercent.Value, mainliftTrainingMax);
+                    }
+                }
+            }
+            return workout;
+        }
 
         private double GetSetWeight(double setPercentage, double baseWeight)
         {
-            return Math.Floor((setPercentage*baseWeight) / 5.0) * 5.0;
+            return Math.Floor(((setPercentage / 100) * baseWeight) / 5.0) * 5.0;
         }
     }
 }

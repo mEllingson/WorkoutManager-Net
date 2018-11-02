@@ -19,8 +19,8 @@ namespace WorkoutManager.Controllers
             //var programs = await service.GetPrograms();
             //var workoutDays = await service.GetBasicWorkoutDayInfo(1);
             //var fullworkoutDays = await service.GetFullWorkoutLayout(1);
-            var builder = new WorkoutBuilder();
-            var test = await builder.GetFullWorkoutLayout(1);
+            //var builder = new WorkoutBuilder();
+            //var test = await builder.GetFullWorkout(1);
 
             return View();
         }
@@ -30,6 +30,7 @@ namespace WorkoutManager.Controllers
             var builder = new WorkoutBuilder();
             var viewModel = new FullWorkoutLayoutViewModel();
             viewModel.Program = await builder.GetFullWorkoutLayout(1);
+            var day = builder.GetWorkoutLayout(viewModel.Program.WorkoutDays.Where(x => x.WorkoutDayID == 1).First(), 275);
 
             return View(viewModel);
         }
